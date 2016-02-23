@@ -16,7 +16,7 @@
 
                 <div class="container">
                         <div class="row">
-                                <h3>Customers</h3>
+                                <h3>Tag</h3>
                         </div>
 
                         <div class="row">
@@ -29,11 +29,9 @@
                         <thead>
 
                                 <tr>
-                                <th>Name</th>
-                                <th>Email Address</th>
-                                <th>Mobile Number</th>
-                                <th>DOB</th>
-                                <th>Password</th>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>category</th>
                                 <th>Action</th>
                                 </tr>
 
@@ -46,14 +44,12 @@
                            <?php
                        include 'database.php';
                        $pdo = Database::connect();
-                       $sql = 'SELECT * FROM customers ORDER BY id DESC';
+                       $sql = 'SELECT * FROM tag ORDER BY id DESC';
                        foreach ($pdo->query($sql) as $row) {
                                 echo '<tr>';
+                                echo '<td>'. $row['id'] . '</td>';
                                 echo '<td>'. $row['name'] . '</td>';
-                                echo '<td>'. $row['email'] . '</td>';
-                                echo '<td>'. $row['mobile'] . '</td>';
-                                echo '<td>'. $row['dob'] . '</td>';
-                                echo '<td>'. $row['password'] . '</td>';
+                                echo '<td>'. $row['category'] . '</td>';
                                 echo '<td width=250>';
                                 echo '<a class="btn" href="read.php?id='.$row['id'].'">Read</a>';
                                 echo ' ';

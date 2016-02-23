@@ -61,10 +61,11 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE customers  set name = ?, email = ?, mobile = ?, dob = ?, password = ?, WHERE id = ?";
-            $q = $pdo->prepare($sql);
+            $sql = "UPDATE customers set name = ?, email = ?, mobile = ?, dob = ?, password = ?, WHERE id = ?";
+     /*       $q = $pdo->prepare($sql);
             $q->execute(array($name,$email,$mobile,$dob,$password));
-            Database::disconnect();
+       */  
+	   Database::disconnect();
             header("Location: index.php");
         }
     } else {
@@ -80,7 +81,9 @@
 	$dob = $data['dob'];
 	$password = $data['password'];
         Database::disconnect();
-    }
+  
+
+	 }
 ?>
 
 
