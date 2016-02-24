@@ -43,7 +43,7 @@
                         <tbody>
 
                            <?php
-                       include 'database.php';
+                    require '../database.php';
                        $pdo = Database::connect();
                        $sql = 'SELECT * FROM customers ORDER BY id DESC';
                        foreach ($pdo->query($sql) as $row) {

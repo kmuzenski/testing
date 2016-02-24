@@ -1,5 +1,5 @@
 <?php
-    require 'database.php';
+    require '../database.php';
     $id = null;
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
@@ -10,7 +10,7 @@
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM customers where id = ?";
+        $sql = "SELECT * FROM product where id = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
@@ -39,54 +39,46 @@
 
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Read a Customer</h3>
+                        <h3>Read a product</h3>
                     </div>
 
                     <div class="form-horizontal" >
                       <div class="control-group">
-                        <label class="control-label">Name</label>
+                        <label class="control-label">id</label>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <?php echo $data['id'];?>
+                            </label>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label">name</label>
                         <div class="controls">
                             <label class="checkbox">
                                 <?php echo $data['name'];?>
                             </label>
                         </div>
                       </div>
-
                       <div class="control-group">
-                        <label class="control-label">Email Address</label>
+                        <label class="control-label">price</label>
                         <div class="controls">
                             <label class="checkbox">
-                                <?php echo $data['email'];?>
-                            </label>
-                        </div>
-                      </div>
-                      <div class="control-group">
-                        <label class="control-label">Mobile Number</label>
-                        <div class="controls">
-                            <label class="checkbox">
-                                <?php echo $data['mobile'];?>
+                                <?php echo $data['price'];?>
                             </label>
                             </div>
                       </div>
 
 
                         <div class="control-group">
-                        <label class="control-label">DOB</label>
+                        <label class="control-label">Description</label>
                         <div class="controls">
                         <label class="checkbox">
-                        <?php echo $data['dob'];?>
+                        <?php echo $data['description'];?>
                         </label>
                         </div>
                         </div>
 
-                        <div class="control-group">
-                        <label class="control-label">Password</label>
-                        <div class="controls">
-                        <label class="checkbox">
-                        <?php echo $data['password'];?>
-                        </label>
-                        </div>
-                        </div>
 
                         <div class="form-actions">
                           <a class="btn" href="index.php">Back</a>

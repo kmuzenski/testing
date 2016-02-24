@@ -45,7 +45,7 @@
                        <tbody>
 
                            <?php
-                       include 'database.php';
+                        require '../database.php';
                        $pdo = Database::connect();
                        $sql = 'SELECT * FROM address  ORDER BY id DESC';
                        foreach ($pdo->query($sql) as $row) {
